@@ -2,6 +2,10 @@ import React from "react";
 import classList from "./Person.css";
 
 const person = props => {
+  const rnd = Math.random();
+  if (rnd > 0.7) {
+    throw new Error("Something Went Wrong !!!");
+  }
   return (
     // <p>I'm a person !!!</p> // this is static code
     // <p>I'm a person and I am {Math.floor(Math.random() * 30)} years old !</p> // this is dynamic code
