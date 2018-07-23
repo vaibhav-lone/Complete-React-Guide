@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./App.css";
+import classList from "./App.css";
 import Person from "./Person/Person";
 
 class App extends Component {
@@ -41,18 +41,8 @@ class App extends Component {
     this.setState({ showPersons: !doesShow });
   };
   render() {
-    // limitations of inline styling: we can not apply the psudo classes here
-    const btnStyle = {
-      backgroundColor: "green",
-      color: "white",
-      fontSize: "inherit",
-      border: "1px solid blue",
-      padding: "8px",
-      cursor: "pointer"
-    };
-
     let persons = null;
-
+    let btnClass = "";
     if (this.state.showPersons) {
       persons = (
         <div>
@@ -69,23 +59,23 @@ class App extends Component {
           })}
         </div>
       );
-      btnStyle.backgroundColor = "red";
+      btnClass = classList.Red;
     }
 
     // lets create an array of classes which we will use for p element below
     const classes = [];
     if (this.state.persons.length <= 2) {
-      classes.push("red");
+      classes.push(classList.red);
     }
     if (this.state.persons.length <= 1) {
-      classes.push("bold");
+      classes.push(classList.bold);
     }
 
     return (
-      <div className="App">
+      <div className={classList.App}>
         <h1>Hi, I'm React App</h1>
         <p className={classes.join(" ")}>This is really working!</p>
-        <button style={btnStyle} onClick={this.togglePersonsHandler}>
+        <button className={btnClass} onClick={this.togglePersonsHandler}>
           Toggle Persons
         </button>
         {persons}
